@@ -522,7 +522,7 @@ func Equal(a, b interface{}) bool {
 	}
 
 	switch t := a.(type) {
-	case int64, float64, bool, string:
+	case int64, uint64, float64, bool, string:
 		return a == b
 	case []byte:
 		return bytes.Equal(t, b.([]byte))
@@ -595,15 +595,13 @@ func upgradeNumericTypes(i interface{}) interface{} {
 	case int32:
 		return int64(t)
 	case uint:
-		return int64(t)
+		return uint64(t)
 	case uint8:
-		return int64(t)
+		return uint64(t)
 	case uint16:
-		return int64(t)
+		return uint64(t)
 	case uint32:
-		return int64(t)
-	case uint64:
-		return int64(t)
+		return uint64(t)
 	case float32:
 		return float64(t)
 	default:
